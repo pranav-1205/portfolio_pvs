@@ -1,0 +1,244 @@
+/* Import Jost font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100..900&display=swap');
+
+/*Variables CSS */
+:root {
+    /* Colors */
+    --hue : 9;
+    --first-color: hsl(var(--hue), 95%, 57%);
+    --title-color: hsl(var(--hue), 4%, 6%);
+    --text-color: hsl(var(--hue), 4%, 14%);
+    --White-color: hsl(var(--hue), 4%, 100%);
+    --body-color: hsl(var(--hue), 4%, 99%);
+    --container-color: hsl(var(--hue), 4%, 92%);
+    --hsla: hsla(var(--hue), 4%, 6%, 0.2);
+
+    /* Font Family */
+    --body-font: 'Jost', sans-serif;
+
+    /* Font Size */
+    --h1-font-size: 5rem;
+    --h2-font-size: 3.5rem;
+    --h3-font-size: 2rem;
+    --large-font-size: 1.375rem;
+    --normal-font-size: 1.275rem;
+    --small-font-size: 1rem;
+    --smaller-font-size: 0.875rem;
+
+    /* Font Weight */
+    --font-medium: 500;
+    --font-bold: 700;
+    --font-extra-bold: 800;
+}
+
+/* Responsive typography */
+
+/* Base Style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+input,
+textarea,
+button {
+    font-family: var(--body-font);
+    color: var(--text-color);
+}
+
+body {
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--title-color);
+    text-transform: uppercase;
+}
+
+h1,
+h2 {
+    font-weight: var(--font-bold);
+    text-shadow: 4px 4px var(--hsla);
+}
+
+h3 {
+    font-weight: var(--font-semi-medium);
+}
+
+p {
+    line-height: 1.7;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input,
+textarea {
+    border: none;
+    outline: none;
+}
+img {
+    max-width: 100%;
+    display : block;
+}
+
+/* Layout */
+
+/* Reusable CSS Classes  */
+.center {
+    border-color: var(--title-color);
+    padding-inline: 2rem;
+    display:flex;
+    align-items: center;
+    position: relative
+}
+
+.center::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0.6rem;
+    border-bottom: 2px solid var(--hsla);
+}
+
+/* Main */
+.main-frame {
+    min-height: 100vh;
+    position: relative;
+}
+
+.main-frame::before,
+.main-frame::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    border:2px solid;
+    pointer-events: none;
+}
+
+.main-frame::before {
+    border-color: var(--text-color);
+    inset: 0.75rem;
+}
+
+.main-frame::after {
+    border-color: var(--hsla);
+    inset: 1.25rem .25rem .25rem 1.25rem;
+}
+
+/* Header and Nav */
+.header {
+    position: absolute;
+    inset: 0.75rem 0.75rem auto;
+}
+
+.nav {
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-logo,
+.nav-menu,
+.nav-social {
+    border-bottom: 2px solid;
+
+}
+
+.nav-logo::before,
+.nav-menu::before,
+.nav-social::before {
+    bottom: -0.6rem;
+}
+
+.nav-logo,
+.nav-link {
+    color: var(--title-color);
+    text-transform: uppercase;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    font-weight: var(--font-extra-bold);
+    border-right: 2px solid;
+    text-shadow: 3px 3px var(--hsla);
+}
+
+.nav-logo::after {
+    content: '';
+    position: absolute;
+    right: -0.75rem;
+    height: 103%;
+    top: 0.5rem;
+    border-right: 2px solid var(--hsla);
+}
+
+.nav-menu {
+    margin-right: auto;
+}
+
+.nav-list,
+.nav-social {
+    display: flex;
+    column-gap: 2.5rem;
+}
+
+.nav-link {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-bold);
+    position: relative;
+
+}
+
+.nav-link,
+.nav-social-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-social-link:hover {
+    color: var(--first-color);
+}
+
+.nav-social {
+    column-gap: 1.5rem;
+}
+
+.nav-social::before {
+    left : 0.4rem;
+}
+
+.nav-social-link {
+    color: var(--title-color);
+    display: inline-flex;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+/* Active Link */
+.active-link {
+    color: var(--first-color);
+}
+
+.active-link::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    left: 50%;
+    bottom: -1.75rem;
+    background-color: var(--title-color);
+}
