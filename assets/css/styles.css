@@ -415,6 +415,51 @@ img {
 
 /* Skills  */
 
+.skills {
+    width: 100%;
+
+}
+
+.skills-container {
+    padding-left: 12rem;
+    column-gap: 2rem;
+}
+
+.skills-group {
+    row-gap: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.skills-name {
+    font-size: var(--small-font-size);
+}
+
+.skills-bar {
+    border-bottom: 2px solid var(--hsla);
+    padding-block: 0.25rem;
+    margin-left:0.5rem;
+}
+
+.skills-percentage {
+    height: 10px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-color: var(--first-color);
+    display: block;
+    margin-left:-0.5rem;
+    position: relative;
+}
+
+.skills-number {
+    position: absolute;
+    top: -1.5rem;
+    right: -1.25rem;
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-medium);
+    color: var(--first-color);
+}
+
 /* Projects  */
 
 /* Educatons */
