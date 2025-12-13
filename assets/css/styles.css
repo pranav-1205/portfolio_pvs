@@ -176,7 +176,10 @@ img {
 }
 
 .icon::before,
-.icon::after {
+.icon::after,
+.home-data::before,
+.home-data::after,
+.contact-card::after {
     content: '';
     position: absolute;
 }
@@ -187,7 +190,10 @@ img {
     z-index: -10;
 }
 
-.icon::after {
+.icon::after,
+.home-data::before,
+.home-data::after,
+.contact-card::after {
     inset: -2.5rem -1.25rem 2.5rem 1.25rem;
     --dot-size: 2px;
     --dot-space: 8px;
@@ -349,6 +355,25 @@ img {
 
 .home-data {
     padding-left: 15%;
+    position: relative;
+}
+
+.home-data::before,
+.home-data::after {
+    width: 100%;
+    height: 150px;
+    top: 0.5rem;
+}
+
+.home-data::before {
+    left: -86%;
+    right: auto;
+}
+
+
+.home-data::after {
+    left: auto;
+    right: -67%;
 }
 
 .home-subtitle {
@@ -461,6 +486,77 @@ img {
 }
 
 /* Projects  */
+.projects-container {
+    column-count: 3;
+    column-gap: 3.75rem;
+}
+.projects-cards {
+    cursor : pointer;
+    margin-bottom: 3.75rem
+}
+
+.projects-header {
+    position:relative;
+}
+
+.projects-header::after {
+    content:'';
+    position: absolute;
+    inset:0.75rem -0.75rem -0.75rem 0.75rem;
+    pointer-events: none;
+    border:2px solid var(--title-color);
+}
+
+.projects-img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.projects-cards:is(:nth-child(2), :nth-child(3), :nth-child(6)) .projects-img {
+   aspect-ratio: 1/1.4;
+}
+
+.projects-link {
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%) ;
+    background-color: var(--White-color);
+    color: var(--title-color);
+    border: 2px solid var(--title-color);
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-items: center;
+    box-shadow: 6px 6px var(--hsla);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.projects-link:hover {
+    box-shadow: 0px 0px var(--hsla);
+}
+
+.projects-cards:hover .projects-link {
+    opacity: 1;
+}
+
+.projects-category,
+.projects-title {
+    text-align: center;
+}
+.projects-category {
+    color: var(--first-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    display: block;
+    margin-bottom: 2.2rem 0.25rem;
+}
+
+.projects-title {
+    font-size: var(--large-font-size);
+    font-weight: var(--font-bold);
+}
 
 /* Educatons */
 .education-container {
@@ -502,6 +598,117 @@ img {
 
 /* Contact */
 
+.contact {
+    width: 100%;
+}
+
+.contact-container {
+    grid-template-columns: 4.5fr 7.5fr;
+    column-gap: 4rem;
+}
+
+.contact-conent {
+    row-gap: 2rem;
+}
+
+.contact-card {
+    border: 2px solid var(--title-color);
+    padding: 1.75rem;
+    position: relative;
+}
+
+
+
+.contact-card::before {
+    content:'';
+    position: absolute;
+    inset: 0.25rem -0.5rem -0.5rem .25rem;
+    border: 2px solid var(--hsla);
+    pointer-events: none;
+}
+
+.contact-card::after {
+    width: 72px;
+    height: 72px;
+    top:0.75rem;
+    right: 0.75rem;
+    left: auto;
+}
+
+.contact-title {
+    font-size: var(--small-font-size);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info a{
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: var(--first-color);
+}
+
+.contact-form {
+    display: grid;
+    row-gap: 1.75rem;
+    position: relative;
+}
+
+.contact-group {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+}
+
+.contact-div {
+    display: grid;
+    row-gap: 0.75rem;
+}
+
+.contact-tag,
+.contact-input {
+    color: var(--title-color);
+}
+
+.contact-tag {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+}
+
+.contact-tag b {
+    color: var(--first-color);
+}
+
+.contact-input {
+    background-color: var(--container-color);
+    font-size: var(--small-font-size);
+    padding: 1.125rem 2rem;
+}
+
+.contact-area .contact-input {
+    resize: none;
+    height: 120px;
+}
+
+.contact-button {
+    justify-self: start;
+}
+
+.message {
+    position: absolute;
+    bottom: -3rem;
+}
+
+.color-red {
+    color: hsl(5, 69%, 51%);
+}
+
+.color-first {
+    color: var(--first-color);
+}
+
 /* Footer */
 .footer {
     height: 5rem;
@@ -531,8 +738,51 @@ img {
     color: var(--first-color);
 }
 
-/* Breakpoints */
 
-/* For Large Device */
 
-/* For Medium Device */
+/* Below laptop – fix border & home overflow */
+@media screen and (max-width: 1200px) {
+
+    .main-frame::before {
+        inset: 0.5rem;
+    }
+
+    .main-frame::after {
+        inset: 0.75rem;
+    }
+
+    .home-img {
+        height: auto;
+        max-height: 85vh;
+        min-height: 60vh;
+        object-fit: cover;
+    }
+
+    .home-data::before,
+    .home-data::after {
+        display: none;
+    }
+
+    html,
+    body {
+        overflow-x: hidden;
+    }
+}
+
+/* Mobile – prevent page from getting cut */
+@media screen and (max-width: 768px) {
+
+    .main-frame {
+        min-height: auto;
+        align-items: start;
+    }
+
+    .main-frame::before,
+    .main-frame::after {
+        inset: 0.4rem;
+    }
+
+    .home-img {
+        max-height: 70vh;
+    }
+}
